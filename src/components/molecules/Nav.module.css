@@ -1,0 +1,49 @@
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+  font-size: 0.9rem;
+}
+
+.link:hover {
+  color: var(--accent);
+}
+
+.contact {
+  padding: 12px 17px;
+  border: 1px solid #5a6055;
+  border-radius: 6px;
+}
+
+.contact span {
+  margin-left: 18px;
+}
+
+@media (max-width: 720px) {
+  .nav {
+    gap: 16px;
+    font-size: 0.85rem;
+  }
+
+  .link:first-child {
+    display: none;
+  }
+
+  .contact {
+    padding: 9px 12px;
+  }
+
+  .contact span {
+    margin-left: 4px;
+  }
+}
+
+@media (max-width: 360px) {
+  .nav {
+    gap: 10px;
+  }
+
+  .contact {
+    padding: 8px;
+  }
+}

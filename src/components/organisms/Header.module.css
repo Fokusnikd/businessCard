@@ -1,0 +1,13 @@
+.header {
+  height: 106px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+}
+
+@media (max-width: 720px) {
+  .header {
+    height: 84px;
+  }
+}

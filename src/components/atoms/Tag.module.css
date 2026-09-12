@@ -1,0 +1,7 @@
+.tag {
+  border: 1px solid #42473d;
+  border-radius: 4px;
+  color: #c6cbbc;
+  font: 0.75rem var(--mono);
+  padding: 6px 9px;
+}

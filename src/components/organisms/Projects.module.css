@@ -1,0 +1,16 @@
+.projects {
+  /* section styles applied via sectionStyles.section */
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+@media (max-width: 720px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+}

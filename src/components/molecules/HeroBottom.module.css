@@ -1,0 +1,48 @@
+.bottom {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  color: var(--muted);
+  font-size: 0.8rem;
+  margin: 66px 0 26px;
+}
+
+.link {
+  color: var(--text);
+}
+
+.link:hover {
+  color: var(--accent);
+}
+
+.link span {
+  margin-left: 22px;
+}
+
+@media (min-width: 1450px) {
+  .bottom {
+    margin-top: 85px;
+  }
+}
+
+@media (max-width: 720px) {
+  .bottom {
+    margin-top: 30px;
+    font-size: 0.7rem;
+  }
+
+  .bottom > span {
+    max-width: 155px;
+    line-height: 1.5;
+  }
+
+  .link {
+    align-self: end;
+    white-space: nowrap;
+  }
+
+  .link span {
+    margin-left: 7px;
+  }
+}

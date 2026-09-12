@@ -1,0 +1,8 @@
+.meta {
+  display: flex;
+  justify-content: space-between;
+  margin: 25px 0 13px;
+  font: 0.65rem var(--mono);
+  letter-spacing: 1px;
+  color: var(--muted);
+}

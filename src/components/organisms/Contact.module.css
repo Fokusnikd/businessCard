@@ -1,0 +1,70 @@
+.contact {
+  margin-top: 90px;
+  background: var(--accent);
+  color: #20271a;
+  border-radius: 9px;
+  padding: 38px 46px 42px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.top > span {
+  font-size: 55px;
+  line-height: 0.8;
+}
+
+.eyebrow {
+  margin-bottom: 27px;
+}
+
+.title {
+  font-size: clamp(2rem, 4.6vw, 4rem);
+  letter-spacing: -2px;
+  line-height: 1.12;
+}
+
+.emphasis {
+  color: #536c2b;
+}
+
+.body {
+  font-size: 1rem;
+  line-height: 1.65;
+  margin: 25px 0 35px;
+}
+
+.contact a:focus-visible {
+  outline-color: #20271a;
+}
+
+@media (max-width: 1000px) {
+  .contact {
+    margin-top: 75px;
+  }
+}
+
+@media (max-width: 720px) {
+  .contact {
+    margin-top: 55px;
+    padding: 28px 24px;
+  }
+
+  .title {
+    font-size: clamp(1.9rem, 7.5vw, 3rem);
+    letter-spacing: -1px;
+  }
+
+  .top > span {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 360px) {
+  .contact {
+    padding: 25px 18px;
+  }
+}

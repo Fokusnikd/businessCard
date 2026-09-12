@@ -1,0 +1,39 @@
+.footer {
+  min-height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.credit {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.toTop {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.toTop:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 720px) {
+  .footer {
+    padding-block: 30px;
+    min-height: 130px;
+    flex-wrap: wrap;
+  }
+
+  .credit {
+    order: 3;
+    width: 100%;
+    font-size: 0.7rem;
+  }
+
+  .toTop {
+    margin-left: auto;
+  }
+}

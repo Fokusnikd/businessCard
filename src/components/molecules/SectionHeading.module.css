@@ -1,0 +1,31 @@
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 25px;
+  margin-bottom: 42px;
+}
+
+.heading > div > p:first-child {
+  margin-bottom: 18px;
+}
+
+.note {
+  font: 0.75rem/1.6 var(--mono);
+  color: var(--muted);
+  max-width: 160px;
+}
+
+@media (max-width: 720px) {
+  .heading {
+    display: block;
+    margin-bottom: 28px;
+  }
+
+  .note {
+    display: block;
+    max-width: none;
+    margin-top: 18px;
+    font-size: 0.7rem;
+  }
+}

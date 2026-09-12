@@ -1,0 +1,26 @@
+.list {
+  list-style: none;
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+  font: 1.05rem var(--mono);
+  color: #d1d5ca;
+}
+
+@media (max-width: 1000px) {
+  .list {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .list {
+    justify-content: start;
+    gap: 16px 23px;
+    font-size: 0.85rem;
+  }
+}
