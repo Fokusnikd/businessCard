@@ -1,6 +1,7 @@
 # Project context
 
-- Publication: `.github/workflows/deploy.yml` builds with Node 22 and npm ci, then deploys `dist` to GitHub Pages on pushes to `main`. Local rename prepared; remote rename from `init` still pending.
+- Frontend CI/CD: `.github/workflows/deploy.yml` validates PRs and `main` with locked npm install, lint, and production build. On `main` only, the same successful job uploads `dist`; `deploy` waits for it and publishes to GitHub Pages. GitHub-maintained actions are pinned to full commit SHAs, token permissions are scoped, stale runs cancel, and jobs have timeouts.
+- Dependency maintenance: `.github/dependabot.yml` checks npm and GitHub Actions weekly and opens PRs rather than updating `main` directly.
 - Asset paths: `vite.config.ts` sets `/businessCard/`; `index.html` is a Vite source entry, never publish it without building.
 - Entry chain verified: `src/main.tsx` → `src/App.tsx` → `src/components/pages/HomePage.tsx` → `src/components/templates/SiteLayout.tsx` and organisms.
 - Copy: `src/content/site.ts`. Components: `src/components/{atoms,molecules,organisms,templates,pages}`. Styles: component CSS modules and `src/styles/global.css`. Detailed UI internals not reviewed in this deployment task.
