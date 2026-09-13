@@ -1,0 +1,35 @@
+.page {
+  padding: 16px;
+  position: relative;
+}
+
+.page > small {
+  font: 6px var(--mono);
+  letter-spacing: 1px;
+}
+
+.page > strong {
+  display: block;
+  font: 29px/1.05 Georgia, serif;
+  margin: 12px 0 18px;
+  position: relative;
+  z-index: 1;
+}
+
+.miniButton {
+  font-size: 7px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid;
+}
+
+.orbit {
+  position: absolute;
+  right: -12px;
+  top: 23px;
+  width: 92px;
+  height: 112px;
+  border: 21px solid #a58c69;
+  border-radius: 50%;
+  transform: rotate(30deg);
+  box-shadow: 8px 8px 12px #49382220;
+}
