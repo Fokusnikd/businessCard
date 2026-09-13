@@ -11,14 +11,17 @@ export type Principle = {
 
 export type Project = {
   id: string;
-  visual: "flowboard" | "forma";
+  visual: "service" | "catalog" | "board";
+  previewLabel: string;
   category: string;
   index: string;
   title: string;
   description: string;
   tags: readonly string[];
-  detailsTitle: string;
-  details: string;
+  features: readonly string[];
+  status: string;
+  siteUrl?: string;
+  repoUrl?: string;
 };
 
 export const site = {
@@ -82,33 +85,45 @@ export const site = {
   projects: {
     eyebrow: "02 / ПРАКТИКА",
     title: "Выбранные проекты",
-    note: "Примеры для вашего портфолио",
+    note: "Три учебных проекта. Скоро — демо и открытый код.",
     items: [
       {
-        id: "flowboard",
-        visual: "flowboard",
-        category: "ВЕБ-ПРИЛОЖЕНИЕ",
-        index: "КОНЦЕПТ / 01",
-        title: "Flowboard",
+        id: "service",
+        visual: "service",
+        previewLabel: "SERVICE / STUDIO",
+        category: "САЙТ УСЛУГИ",
+        index: "01",
+        title: "Бизнес в деталях",
         description:
-          "Менеджер задач с канбан-доской, чтобы видеть главное и двигаться от идеи к результату.",
-        tags: ["React", "TypeScript", "Node.js"],
-        detailsTitle: "Подробнее о концепте",
-        details:
-          "Пример оформления кейса, а не заявленный выполненный проект. Замените его своей работой: опишите задачу, ваш вклад и результат, затем добавьте ссылки на сайт и репозиторий.",
+          "Сайт для специалиста или небольшой компании: представить услуги, показать работы и помочь клиенту обратиться.",
+        tags: ["React", "TypeScript", "CSS Modules"],
+        features: ["Адаптивная вёрстка и внимание к деталям", "Услуги, галерея и путь к обращению"],
+        status: "Запланирован",
       },
       {
-        id: "forma",
-        visual: "forma",
-        category: "САЙТ БРЕНДА",
-        index: "КОНЦЕПТ / 02",
-        title: "Forma Studio",
+        id: "catalog",
+        visual: "catalog",
+        previewLabel: "OBJECTS / COLLECTION",
+        category: "КАТАЛОГ ТОВАРОВ",
+        index: "02",
+        title: "Найти своё",
         description:
-          "Сайт дизайн-студии с выразительной типографикой, аккуратной сеткой и адаптивной вёрсткой.",
-        tags: ["HTML / CSS", "JavaScript", "Figma"],
-        detailsTitle: "Подробнее о концепте",
-        details:
-          "Демонстрационный визуальный концепт. Для настоящего кейса добавьте контекст задачи, использованные технологии и проверяемый результат. Не указывайте выдуманные показатели.",
+          "Каталог, в котором удобно исследовать ассортимент, сравнивать варианты и сохранять понравившиеся товары.",
+        tags: ["React", "TypeScript", "LocalStorage"],
+        features: ["Поиск, фильтры и сортировка", "Карточки товаров и избранное"],
+        status: "Запланирован",
+      },
+      {
+        id: "planner",
+        visual: "board",
+        previewLabel: "TASKS / WORKSPACE",
+        category: "ВЕБ-ПРИЛОЖЕНИЕ",
+        index: "03",
+        title: "От идеи к делу",
+        description: "Личный планировщик: разложить работу по задачам, расставить приоритеты и видеть, что уже сделано.",
+        tags: ["React", "TypeScript", "LocalStorage"],
+        features: ["Создание, редактирование и статусы задач", "Состояние интерфейса и сохранение данных"],
+        status: "Запланирован",
       },
     ] satisfies Project[],
   },

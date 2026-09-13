@@ -1,0 +1,163 @@
+name: Cursor Atomic Design review
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: cursor-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  review:
+    # Personal repository: do not expose the Cursor secret to forks or other authors.
+    if: >-
+      github.event.pull_request.draft == false &&
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      github.event.pull_request.user.login == github.repository_owner &&
+      github.actor == github.repository_owner
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      PR_NUMBER: ${{ github.event.pull_request.number }}
+      HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+      BASE_SHA: ${{ github.event.pull_request.base.sha }}
+      HEAD_BRANCH: ${{ github.event.pull_request.head.ref }}
+    steps:
+      - name: Checkout PR head
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Check configuration
+        env:
+          CURSOR_API_KEY: ${{ secrets.CURSOR_API_KEY }}
+        run: |
+          test -n "$CURSOR_API_KEY" || { echo '::error::Add the CURSOR_API_KEY repository secret.'; exit 1; }
+
+      - name: Skip superseded run
+        id: current
+        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7
+        with:
+          script: |
+            const {data: pr} = await github.rest.pulls.get({...context.repo, pull_number: Number(process.env.PR_NUMBER)});
+            core.setOutput('run', pr.state === 'open' && !pr.draft && pr.head.sha === process.env.HEAD_SHA);
+
+      - name: Set up Node
+        if: steps.current.outputs.run == 'true'
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        if: steps.current.outputs.run == 'true'
+        run: npm ci
+
+      - name: Install Cursor CLI
+        if: steps.current.outputs.run == 'true'
+        run: |
+          curl -fsS https://cursor.com/install -o "$RUNNER_TEMP/install-cursor.sh"
+          bash "$RUNNER_TEMP/install-cursor.sh"
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+          echo "$HOME/.cursor/bin" >> "$GITHUB_PATH"
+
+      - name: Prepare review context
+        if: steps.current.outputs.run == 'true'
+        run: |
+          cp .github/prompts/atomic-review.md "$RUNNER_TEMP/atomic-prompt.md"
+          git diff --name-only "$BASE_SHA...$HEAD_SHA" > "$RUNNER_TEMP/atomic-files.txt"
+          git diff "$BASE_SHA...$HEAD_SHA" -- src > "$RUNNER_TEMP/atomic-diff.patch"
+          mkdir -p "$HOME/.cursor"
+          cat > "$HOME/.cursor/cli-config.json" <<'JSON'
+          {"permissions":{"allow":["Read(**)","Write(src/**)","Write(.context/**)","Shell(git diff:*)","Shell(git status:*)","Shell(npm run:*)","Shell(rg:*)"],"deny":["Shell(git push:*)","Shell(git commit:*)","Shell(gh:*)","Read(.env*)","Write(.github/**)","Write(package*.json)","Write(.git/**)"]}}
+          JSON
+
+      - name: Review and refactor with Cursor
+        if: steps.current.outputs.run == 'true'
+        timeout-minutes: 15
+        env:
+          CURSOR_API_KEY: ${{ secrets.CURSOR_API_KEY }}
+          CURSOR_MODEL: ${{ vars.CURSOR_MODEL }}
+        run: |
+          args=()
+          if [ -n "$CURSOR_MODEL" ]; then args+=(--model "$CURSOR_MODEL"); fi
+          agent -p --force --output-format text "${args[@]}" \
+            "Read and follow $RUNNER_TEMP/atomic-prompt.md. Changed files: $RUNNER_TEMP/atomic-files.txt. PR diff: $RUNNER_TEMP/atomic-diff.patch. Review and fix this PR now." \
+            > "$RUNNER_TEMP/atomic-report.md"
+
+      - name: Validate scope and completion
+        if: steps.current.outputs.run == 'true'
+        run: |
+          test "$(git rev-parse HEAD)" = "$HEAD_SHA"
+          python3 - <<'PY'
+          import os, pathlib, subprocess
+          def git(*args):
+              return subprocess.check_output(['git', *args]).decode().split('\0')
+          paths = set(git('diff', '--name-only', '-z', 'HEAD') + git('ls-files', '--others', '--exclude-standard', '-z')) - {''}
+          invalid = sorted(p for p in paths if not p.startswith(('src/', '.context/')))
+          if invalid:
+              raise SystemExit('Out-of-scope modifications: ' + ', '.join(invalid))
+          report = pathlib.Path(os.environ['RUNNER_TEMP'], 'atomic-report.md').read_text()
+          if not report.strip().endswith('REVIEW_COMPLETE'):
+              raise SystemExit('Cursor did not confirm completion; see the review artifact.')
+          PY
+          git diff --check
+          npm run lint
+          npm run build
+
+      - name: Commit and push fixes
+        if: steps.current.outputs.run == 'true'
+        id: publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          current=$(gh api "repos/$GITHUB_REPOSITORY/pulls/$PR_NUMBER" --jq '.head.sha')
+          test "$current" = "$HEAD_SHA" || { echo '::error::PR changed during review. No push performed.'; exit 1; }
+          git add -A -- src .context
+          if ! git diff --cached --quiet; then
+            git -c user.name='cursor-architecture[bot]' -c user.email='cursor-architecture[bot]@users.noreply.github.com' \
+              commit -m 'refactor: apply Cursor architecture review'
+            gh auth setup-git
+            git push "https://github.com/$GITHUB_REPOSITORY.git" "HEAD:refs/heads/$HEAD_BRANCH"
+          fi
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Notify owner
+        if: steps.current.outputs.run == 'true'
+        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7
+        env:
+          REVIEWED_SHA: ${{ steps.publish.outputs.sha }}
+        with:
+          script: |
+            const fs = require('fs');
+            const {data: pr} = await github.rest.pulls.get({...context.repo, pull_number: Number(process.env.PR_NUMBER)});
+            const current = pr.state === 'open' && pr.head.sha === process.env.REVIEWED_SHA;
+            const report = fs.readFileSync(`${process.env.RUNNER_TEMP}/atomic-report.md`, 'utf8').replace(/REVIEW_COMPLETE\s*$/, '').slice(0, 20000);
+            const title = current ? 'Готово к твоему просмотру' : 'Ревью завершено для предыдущей версии PR';
+            await github.rest.issues.createComment({...context.repo, issue_number: pr.number,
+              body: `@${pr.user.login}\n\n## ${title}\n\nПроверен коммит: ${process.env.REVIEWED_SHA}. Сборка и линтер прошли.\n\n${report}\n\nСлияние остаётся за тобой.`});
+
+      - name: Save review report
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: cursor-review-${{ github.event.pull_request.number }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/atomic-report.md
+          if-no-files-found: ignore
+          retention-days: 7
+
+      - name: Report failure
+        if: failure()
+        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7
+        with:
+          script: |
+            await github.rest.issues.createComment({...context.repo, issue_number: Number(process.env.PR_NUMBER),
+              body: `Проверка Cursor не завершена — результат пока не готов к просмотру. Проверь [журнал запуска](${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}) и отчёт, если он создан. Автоматического слияния нет.`});

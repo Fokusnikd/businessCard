@@ -1,0 +1,46 @@
+.page {
+  padding: 16px;
+  position: relative;
+}
+
+.page > strong {
+  font-size: 13px;
+  letter-spacing: -0.4px;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 7px;
+  margin-top: 16px;
+}
+
+.columns small {
+  font-size: 6px;
+}
+
+.task {
+  background: white;
+  padding: 8px 5px;
+  border: 1px solid #e3e7db;
+  border-radius: 4px;
+  margin-top: 7px;
+}
+
+.task > span {
+  display: block;
+  width: 18px;
+  height: 4px;
+  background: #c8dca7;
+  border-radius: 4px;
+}
+
+.task b {
+  display: block;
+  font-size: 7px;
+  margin: 7px 0;
+}
+
+.columns > div:nth-child(2) .task > span {
+  background: #c8b9df;
+}
