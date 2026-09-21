@@ -7,6 +7,12 @@
   place-items: center;
 }
 
+.stage {
+  position: relative;
+  width: min(100%, 390px);
+  aspect-ratio: 1;
+}
+
 .ring {
   position: absolute;
   border-radius: 50%;
@@ -14,30 +20,19 @@
 }
 
 .outer {
-  width: min(100%, 390px);
-  aspect-ratio: 1;
+  inset: 0;
   animation: spin 48s linear infinite;
 }
 
 .mid {
-  width: min(72%, 280px);
-  aspect-ratio: 1;
+  inset: 16%;
   border-color: color-mix(in srgb, var(--signal) 55%, transparent);
 }
 
 .inner {
-  width: min(28%, 110px);
-  aspect-ratio: 1;
+  inset: 38%;
   border-width: 2px;
   border-color: var(--paper);
-}
-
-.core {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: var(--signal);
-  box-shadow: 0 0 24px #e85d2c66;
 }
 
 .tick {
@@ -56,8 +51,10 @@
 }
 
 .fStop {
-  position: relative;
-  z-index: 1;
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
   font-family: var(--serif);
   font-size: clamp(2.4rem, 5vw, 3.4rem);
   font-variation-settings: 'SOFT' 80, 'opsz' 48;
@@ -102,7 +99,7 @@
     margin-top: 12px;
   }
 
-  .outer {
+  .stage {
     width: min(100%, 300px);
   }
 }

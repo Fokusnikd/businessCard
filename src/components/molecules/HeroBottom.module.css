@@ -30,7 +30,7 @@
   }
 
   .bottom > span {
-    max-width: 210px;
-    line-height: 1.5;
+    max-width: min(210px, 58%);
+    line-height: 1.45;
   }
 }

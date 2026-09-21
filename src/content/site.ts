@@ -60,7 +60,7 @@ export const site = {
       label: 'Смотреть проекты',
     },
     bottom: {
-      note: 'Имя, стек и контакты меняются в одном файле — src/content/site.ts',
+      note: 'Правки текста: src/content/site.ts',
       scroll: 'Дальше',
       href: '#stack',
     },
@@ -68,7 +68,7 @@ export const site = {
       index: 'FIG. 01 — APERTURE',
       fStop: 'f/1.4',
       caption: 'фокус на React',
-      coordinate: 'REACT · TYPESCRIPT · UI',
+      coordinate: 'REACT · TS · UI',
     },
   },
   tech: {
