@@ -1,10 +1,10 @@
 .card {
-  /* project card wrapper */
+  min-width: 0;
 }
 
 .description {
   color: var(--muted);
-  font-size: 1rem;
+  font-size: 0.98rem;
   line-height: 1.65;
-  margin: 0 0 20px;
+  margin: 0 0 18px;
 }

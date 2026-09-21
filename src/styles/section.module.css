@@ -1,16 +1,16 @@
 .section {
-  padding-block: 105px;
+  padding-block: 96px;
   border-bottom: 1px solid var(--line);
 }
 
 @media (max-width: 1000px) {
   .section {
-    padding-block: 80px;
+    padding-block: 76px;
   }
 }
 
 @media (max-width: 720px) {
   .section {
-    padding-block: 62px;
+    padding-block: 58px;
   }
 }

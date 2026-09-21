@@ -1,36 +1,35 @@
 .footer {
-  min-height: 140px;
+  min-height: 120px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
+  border-top: 1px solid var(--line);
 }
 
 .credit {
-  font-size: 0.75rem;
+  font: 0.75rem var(--mono);
   color: var(--muted);
 }
 
 .toTop {
-  font-size: 0.75rem;
+  font-size: 0.82rem;
   color: var(--muted);
 }
 
 .toTop:hover {
-  color: var(--accent);
+  color: var(--paper);
 }
 
 @media (max-width: 720px) {
   .footer {
-    padding-block: 30px;
-    min-height: 130px;
+    padding-block: 28px;
     flex-wrap: wrap;
   }
 
   .credit {
     order: 3;
     width: 100%;
-    font-size: 0.7rem;
   }
 
   .toTop {

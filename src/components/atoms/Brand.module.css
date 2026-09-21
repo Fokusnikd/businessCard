@@ -1,35 +1,24 @@
 .brand {
-  font-size: 23px;
-  letter-spacing: -1px;
-  font-weight: 700;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 10px;
+  font: 600 0.95rem var(--sans);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-.icon {
-  background: var(--accent);
-  color: var(--bg);
-  font: 700 18px var(--mono);
-  padding: 8px 6px 8px 6px;
-  padding-right: 9px;
-  border-radius: 7px;
-  letter-spacing: -3px;
+.mark {
+  color: var(--paper);
 }
 
-.dot {
-  color: var(--accent);
-  margin-left: -10px;
+.initials {
+  font: 500 0.85rem/1 var(--mono);
+  letter-spacing: 0.14em;
 }
 
 @media (max-width: 720px) {
   .brand {
-    font-size: 20px;
-  }
-}
-
-@media (max-width: 360px) {
-  .brand {
-    font-size: 18px;
+    gap: 8px;
+    font-size: 0.85rem;
   }
 }

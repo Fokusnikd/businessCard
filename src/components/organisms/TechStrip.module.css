@@ -1,39 +1,16 @@
 .strip {
-  border-block: 1px solid var(--line);
-  background: #1c1f1b;
-}
-
-.inner {
-  display: flex;
-  align-items: center;
-  gap: 45px;
-  min-height: 90px;
-}
-
-.label {
-  font: 0.7rem var(--mono);
-  letter-spacing: 1px;
-  color: var(--muted);
-  max-width: 100px;
-  line-height: 1.6;
+  padding-block: 88px;
+  border-bottom: 1px solid var(--line);
 }
 
 @media (max-width: 1000px) {
-  .inner {
-    gap: 25px;
+  .strip {
+    padding-block: 72px;
   }
 }
 
 @media (max-width: 720px) {
-  .inner {
-    align-items: start;
-    gap: 22px;
-    padding-block: 23px;
-  }
-
-  .label {
-    font-size: 0.6rem;
-    min-width: 80px;
-    max-width: 80px;
+  .strip {
+    padding-block: 56px;
   }
 }

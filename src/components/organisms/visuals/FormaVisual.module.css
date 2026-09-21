@@ -1,96 +1,99 @@
 .visual {
-  height: 310px;
-  border-radius: 8px;
+  height: 240px;
+  border-radius: 4px;
   position: relative;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 35px 30px;
-  background: #cdc3b8;
+  padding: 22px 18px;
+  background: #2a221c;
 }
 
 .window {
   width: 100%;
-  height: 240px;
-  background: #f5f0e7;
-  color: #38342c;
-  box-shadow: 0 15px 30px #4d3d3520;
-  transform: rotate(3deg);
-  padding: 17px 20px;
+  height: 196px;
+  background: #f6efe3;
+  color: #2c261e;
+  box-shadow: 0 16px 32px #00000038;
+  transform: rotate(2.5deg);
+  padding: 14px 16px;
 }
 
 .nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #c9c0b0;
-  padding-bottom: 12px;
+  border-bottom: 1px solid #d8ccb8;
+  padding-bottom: 10px;
 }
 
 .nav b {
+  font-family: var(--serif);
   font-size: 16px;
-  letter-spacing: -1px;
+  letter-spacing: -0.6px;
 }
 
 .nav span {
   font-size: 6px;
+  letter-spacing: 0.08em;
 }
 
 .body {
   position: relative;
-  padding: 15px 0;
+  padding: 12px 0;
 }
 
 .body > span:first-child {
-  font: 5px var(--mono);
-  letter-spacing: 1px;
+  font: 6px var(--mono);
+  letter-spacing: 0.14em;
 }
 
 .body > b {
   display: block;
-  font-family: Georgia, serif;
-  font-size: 40px;
-  line-height: 1;
-  margin: 10px 0 15px;
-  font-weight: 400;
-  letter-spacing: -2px;
+  font-family: var(--serif);
+  font-size: 34px;
+  line-height: 0.95;
+  margin: 8px 0 12px;
+  font-weight: 500;
+  letter-spacing: -1.4px;
 }
 
 .body b i {
-  font-weight: 400;
+  color: #e85d2c;
+  font-style: italic;
 }
 
 .link {
-  font-size: 6px;
+  font-size: 7px;
   border-bottom: 1px solid #595248;
-  padding-bottom: 3px;
+  padding-bottom: 2px;
 }
 
 .footer {
   display: flex;
   justify-content: space-between;
-  font-size: 5px;
-  letter-spacing: 1px;
-  border-top: 1px solid #c9c0b0;
-  padding-top: 9px;
+  font-size: 6px;
+  letter-spacing: 0.1em;
+  border-top: 1px solid #d8ccb8;
+  padding-top: 8px;
 }
 
 .sculpture {
   position: absolute;
-  right: 7px;
-  top: 32px;
-  width: 105px;
-  height: 125px;
-  transform: rotate(-9deg);
+  right: 6px;
+  top: 24px;
+  width: 96px;
+  height: 118px;
+  transform: rotate(-8deg);
 }
 
 .sculpture div {
   position: absolute;
-  background: linear-gradient(115deg, #bda27c, #806744 60%, #503d2c);
+  background: linear-gradient(115deg, #c9a27a, #8a5a38 60%, #3d2418);
   box-shadow: 6px 8px 10px #5e4f3726;
-  width: 105px;
-  height: 43px;
+  width: 96px;
+  height: 38px;
   border-radius: 50%;
 }
 
@@ -101,61 +104,19 @@
 }
 
 .sculpture div:nth-child(2) {
-  top: 35px;
+  top: 32px;
   transform: rotate(-20deg);
   z-index: 2;
 }
 
 .sculpture div:nth-child(3) {
-  top: 73px;
+  top: 66px;
   transform: rotate(10deg);
   z-index: 1;
 }
 
-@media (max-width: 1000px) {
-  .visual {
-    padding: 20px;
-    height: 260px;
-  }
-
-  .window {
-    height: 220px;
-  }
-
-  .sculpture {
-    transform: rotate(-9deg) scale(0.75);
-    right: -12px;
-    top: 28px;
-  }
-
-  .body > b {
-    font-size: 33px;
-  }
-}
-
-@media (max-width: 720px) {
-  .visual {
-    height: 285px;
-    padding: 30px;
-  }
-
-  .window {
-    height: 230px;
-  }
-
-  .sculpture {
-    transform: rotate(-9deg);
-    right: 4px;
-    top: 30px;
-  }
-
-  .body > b {
-    font-size: 37px;
-  }
-}
-
 @media (max-width: 360px) {
-  .visual {
-    padding: 15px;
+  .body > b {
+    font-size: 28px;
   }
 }

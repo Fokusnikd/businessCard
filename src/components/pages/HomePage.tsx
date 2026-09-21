@@ -6,8 +6,20 @@ export function HomePage() {
   return (
     <SiteLayout
       skipLabel={site.skipLink}
-      header={<Header brandAriaLabel={site.brand.homeLabel} nav={site.nav} />}
-      footer={<Footer credit={site.footer.credit} toTop={site.footer.toTop} />}
+      header={
+        <Header
+          brandAriaLabel={site.brand.homeLabel}
+          initials={site.brand.initials}
+          nav={site.nav}
+        />
+      }
+      footer={
+        <Footer
+          initials={site.brand.initials}
+          credit={site.footer.credit}
+          toTop={site.footer.toTop}
+        />
+      }
     >
       <Hero />
       <TechStrip />

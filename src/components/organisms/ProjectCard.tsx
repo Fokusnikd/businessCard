@@ -5,8 +5,10 @@ import type { Project } from '@/content/site'
 import styles from './ProjectCard.module.css'
 import { FlowboardVisual } from './visuals/FlowboardVisual'
 import { FormaVisual } from './visuals/FormaVisual'
+import { KadrVisual } from './visuals/KadrVisual'
 
 const visuals = {
+  kadr: KadrVisual,
   flowboard: FlowboardVisual,
   forma: FormaVisual,
 } as const

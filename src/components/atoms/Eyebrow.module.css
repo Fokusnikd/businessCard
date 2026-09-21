@@ -1,11 +1,12 @@
 .eyebrow {
-  font: 0.75rem var(--mono);
-  letter-spacing: 1.4px;
-  line-height: 1.8;
-  margin: 0 0 27px;
+  font: 0.72rem/1.7 var(--mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin: 0 0 22px;
   display: flex;
   align-items: center;
   gap: 10px;
+  color: var(--paper-dim);
 }
 
 .muted {
@@ -14,8 +15,7 @@
 
 @media (max-width: 720px) {
   .eyebrow {
-    font-size: 0.65rem;
-    letter-spacing: 1px;
-    margin-bottom: 22px;
+    font-size: 0.64rem;
+    margin-bottom: 16px;
   }
 }

@@ -1,4 +1,4 @@
-import { Accent, ArrowHint, Button, Container, Eyebrow, Heading } from '@/components/atoms'
+import { Button, Container, Eyebrow, Heading } from '@/components/atoms'
 import { HeroBottom } from '@/components/molecules'
 import { site } from '@/content/site'
 
@@ -12,22 +12,17 @@ export function Hero() {
     <Container as="section" className={styles.hero} aria-labelledby="hero-title">
       <div>
         <Eyebrow withStatus>{hero.eyebrow}</Eyebrow>
+        <p className={styles.role}>{hero.role}</p>
         <Heading as="h1" id="hero-title">
-          {hero.greeting}
-          <br />
-          <span className={styles.name}>
-            {hero.name}
-            <Accent />
-          </span>
+          {hero.name}
         </Heading>
-        <p className={styles.line}>
-          {hero.lineLead}
-          <br />в <em>{hero.lineEmphasis}</em>
-        </p>
-        <p className={styles.description}>{hero.description}</p>
-        <Button href={hero.cta.href}>
-          {hero.cta.label} <ArrowHint />
-        </Button>
+        <p className={styles.bio}>{hero.bio}</p>
+        <div className={styles.actions}>
+          <Button href={hero.cta.href}>{hero.cta.label}</Button>
+          <Button href={hero.secondary.href} variant="ghost">
+            {hero.secondary.label}
+          </Button>
+        </div>
       </div>
       <HeroArt />
       <HeroBottom note={hero.bottom.note} scroll={hero.bottom.scroll} href={hero.bottom.href} />

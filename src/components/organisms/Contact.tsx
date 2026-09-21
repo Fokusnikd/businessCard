@@ -1,5 +1,5 @@
 import { ArrowHint, Container, Eyebrow, Heading } from '@/components/atoms'
-import { ContactBottom } from '@/components/molecules'
+import { ContactList } from '@/components/molecules'
 import { site } from '@/content/site'
 import styles from './Contact.module.css'
 
@@ -13,16 +13,10 @@ export function Contact() {
         <ArrowHint />
       </div>
       <Heading as="h2" id="contact-title" className={styles.title}>
-        {contact.titleLead}
-        <br />
-        {contact.titleMid} <em className={styles.emphasis}>{contact.titleEmphasis}</em>
+        {contact.titleLead} <em>{contact.titleEmphasis}</em>
       </Heading>
-      <p className={styles.body}>
-        {contact.body[0]}
-        <br />
-        {contact.body[1]}
-      </p>
-      <ContactBottom email={contact.email} note={contact.note} />
+      <p className={styles.body}>{contact.body}</p>
+      <ContactList channels={contact.channels} />
     </Container>
   )
 }

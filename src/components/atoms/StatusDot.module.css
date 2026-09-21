@@ -1,8 +1,19 @@
 .dot {
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
   display: inline-block;
-  background: var(--accent);
+  background: var(--signal);
   border-radius: 50%;
-  box-shadow: 0 0 0 4px #d5fa6c10;
+  box-shadow: 0 0 0 5px #e85d2c22;
+  animation: pulse 2.8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 4px #e85d2c18;
+  }
+  50% {
+    box-shadow: 0 0 0 7px #e85d2c08;
+  }
 }

@@ -5,14 +5,17 @@ import styles from './Header.module.css'
 
 type HeaderProps = {
   brandAriaLabel: string
+  initials: string
   nav: readonly NavItem[]
 }
 
-export function Header({ brandAriaLabel, nav }: HeaderProps) {
+export function Header({ brandAriaLabel, initials, nav }: HeaderProps) {
   return (
-    <Container as="header" className={styles.header}>
-      <Brand href="#main" ariaLabel={brandAriaLabel} />
-      <Nav items={nav} />
-    </Container>
+    <header className={styles.bar}>
+      <Container className={styles.header}>
+        <Brand href="#main" ariaLabel={brandAriaLabel} initials={initials} />
+        <Nav items={nav} />
+      </Container>
+    </header>
   )
 }

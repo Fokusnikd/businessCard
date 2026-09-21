@@ -1,4 +1,5 @@
 export { Accent } from './Accent'
+export { ApertureMark } from './ApertureMark'
 export { ArrowHint } from './ArrowHint'
 export { Brand } from './Brand'
 export { Button } from './Button'

@@ -1,7 +1,6 @@
 import { Accent, Container, Eyebrow, Heading } from '@/components/atoms'
 import { SectionHeading } from '@/components/molecules'
 import { site } from '@/content/site'
-import { cx } from '@/shared/lib/cx'
 import sectionStyles from '@/styles/section.module.css'
 
 import { ProjectCard } from './ProjectCard'
@@ -13,7 +12,7 @@ export function Projects() {
   return (
     <Container
       as="section"
-      className={cx(sectionStyles.section, styles.projects)}
+      className={sectionStyles.section}
       id="projects"
       aria-labelledby="projects-title"
     >

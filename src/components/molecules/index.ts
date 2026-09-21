@@ -1,5 +1,4 @@
-export { CodeCard } from './CodeCard'
-export { ContactBottom } from './ContactBottom'
+export { ContactList } from './ContactList'
 export { ExpandableDetails } from './ExpandableDetails'
 export { HeroBottom } from './HeroBottom'
 export { Nav } from './Nav'

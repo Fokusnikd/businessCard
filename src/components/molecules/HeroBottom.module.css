@@ -4,45 +4,33 @@
   justify-content: space-between;
   gap: 20px;
   color: var(--muted);
-  font-size: 0.8rem;
-  margin: 66px 0 26px;
+  font-size: 0.82rem;
+  margin: 48px 0 8px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
 }
 
 .link {
-  color: var(--text);
+  color: var(--paper);
+  white-space: nowrap;
 }
 
 .link:hover {
-  color: var(--accent);
+  color: var(--signal-soft);
 }
 
 .link span {
-  margin-left: 22px;
-}
-
-@media (min-width: 1450px) {
-  .bottom {
-    margin-top: 85px;
-  }
+  margin-left: 10px;
 }
 
 @media (max-width: 720px) {
   .bottom {
-    margin-top: 30px;
-    font-size: 0.7rem;
+    margin-top: 28px;
+    font-size: 0.74rem;
   }
 
   .bottom > span {
-    max-width: 155px;
+    max-width: 210px;
     line-height: 1.5;
-  }
-
-  .link {
-    align-self: end;
-    white-space: nowrap;
-  }
-
-  .link span {
-    margin-left: 7px;
   }
 }

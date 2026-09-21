@@ -1,8 +1,10 @@
 .meta {
   display: flex;
   justify-content: space-between;
-  margin: 25px 0 13px;
+  gap: 12px;
+  margin: 22px 0 12px;
   font: 0.65rem var(--mono);
-  letter-spacing: 1px;
+  letter-spacing: 0.12em;
   color: var(--muted);
+  text-transform: uppercase;
 }

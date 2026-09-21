@@ -1,158 +1,131 @@
 .visual {
-  height: 310px;
-  border-radius: 8px;
+  height: 240px;
+  border-radius: 4px;
   position: relative;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 35px 30px;
-  background: #dce6ce;
+  padding: 22px 18px;
+  background: #1c2430;
 }
 
 .window {
   width: 100%;
-  color: #333a32;
-  background: #f6f8f2;
-  border-radius: 7px;
-  box-shadow: 0 16px 35px #34432429;
-  padding: 18px 18px 0;
-  transform: rotate(-4deg);
+  color: #2a241c;
+  background: #f4ecda;
+  border-radius: 6px;
+  box-shadow: 0 18px 36px #00000040;
+  padding: 14px 14px 0;
+  transform: rotate(-3deg);
   overflow: hidden;
-  height: 240px;
+  height: 196px;
 }
 
 .top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #e0e4d9;
-  padding-bottom: 17px;
+  border-bottom: 1px solid #e0d6c2;
+  padding-bottom: 12px;
 }
 
 .top > b {
-  font-size: 14px;
-  letter-spacing: -0.7px;
+  font-size: 13px;
+  letter-spacing: -0.4px;
 }
 
 .top > b > span {
   font-weight: 400;
+  color: #e85d2c;
 }
 
 .top > span {
   font-size: 8px;
+  color: #6d6456;
 }
 
 .heading {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 17px;
-  letter-spacing: -0.7px;
-  padding: 18px 0;
+  font-size: 15px;
+  letter-spacing: -0.5px;
+  padding: 12px 0;
 }
 
 .heading > span {
   font-size: 7px;
-  background: #333e30;
-  color: #fff;
-  letter-spacing: 0;
-  padding: 7px;
-  border-radius: 4px;
+  background: #0a0e14;
+  color: #f2ead7;
+  padding: 6px 7px;
+  border-radius: 999px;
 }
 
 .kanban {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 8px;
+  gap: 7px;
 }
 
 .kanban small {
   font: 6px var(--mono);
-  color: #626c5c;
+  color: #6d6456;
   display: block;
-  margin-bottom: 9px;
+  margin-bottom: 7px;
 }
 
 .kanban i {
   font-style: normal;
-  background: #e7ebdf;
+  background: #e8dfcc;
   padding: 2px 4px;
   margin-left: 4px;
 }
 
 .task {
-  background: #fff;
-  border: 1px solid #e6e9e0;
+  background: #fffaf0;
+  border: 1px solid #e4d9c4;
   border-radius: 4px;
-  padding: 10px 8px;
+  padding: 8px 7px;
   font-size: 7px;
 }
 
 .task b {
   display: block;
   font-size: 9px;
-  line-height: 1.4;
-  margin: 9px 0;
+  line-height: 1.35;
+  margin: 7px 0;
 }
 
 .label {
-  padding: 3px 5px;
-  background: #eaf2dc;
+  padding: 2px 5px;
+  background: #f0d7cc;
   border-radius: 3px;
   font-size: 6px;
 }
 
 .violet {
-  background: #eee7fa;
+  background: #dce4f2;
 }
 
 .task hr {
   border: 0;
-  border-top: 1px solid #edf0e8;
+  border-top: 1px solid #ebe2d1;
 }
 
 .task > span:last-child {
-  color: #6b7561;
+  color: #6d6456;
 }
 
 .completed {
-  background: #eaf2dc;
+  background: #e7efd6;
 }
 
 .completed > span {
-  color: #42642f;
+  color: #3f5a28;
 }
 
 .stub {
-  height: 45px;
-  margin-top: 8px;
-}
-
-@media (max-width: 1000px) {
-  .visual {
-    padding: 20px;
-    height: 260px;
-  }
-
-  .window {
-    height: 220px;
-  }
-}
-
-@media (max-width: 720px) {
-  .visual {
-    height: 285px;
-    padding: 30px;
-  }
-
-  .window {
-    height: 230px;
-  }
-}
-
-@media (max-width: 360px) {
-  .visual {
-    padding: 15px;
-  }
+  height: 36px;
+  margin-top: 6px;
 }
