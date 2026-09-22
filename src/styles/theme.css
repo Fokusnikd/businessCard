@@ -1,0 +1,113 @@
+@theme static {
+  --font-norms: Arial, Helvetica, sans-serif;
+
+  --color-primary-5: #d8ecf9;
+  --color-primary-6: #36a9e1;
+  --color-primary-7: #2891d0;
+  --color-primary-8: #1a74b8;
+  --color-primary-9: #0f5cab;
+  --color-primary-10: #004899;
+
+  --color-secondary-5: #fef4f2;
+  --color-secondary-6: #fdeae6;
+  --color-secondary-7: #fac9c0;
+  --color-secondary-8: #f6ac9e;
+  --color-secondary-9: #f2907a;
+  --color-secondary-10: #ee7354;
+
+  --color-grayscale-0: #000000;
+  --color-grayscale-1: #1a1e24;
+  --color-grayscale-2: #23262b;
+  --color-grayscale-3: #303439;
+  --color-grayscale-4: #42474e;
+  --color-grayscale-5: #979da3;
+  --color-grayscale-6: #c6c6c6;
+  --color-grayscale-7: #e2e6e9;
+  --color-grayscale-8: #f2f5f7;
+  --color-grayscale-9: #f7f9fb;
+  --color-grayscale-10: #ffffff;
+
+  --color-danger-red-10: #ff1d25;
+  --color-danger-red-11: #d90f16;
+  --color-danger-red-18: #331419;
+  --color-danger-red-19: #201314;
+
+  --color-success-16: #17421d;
+
+  --color-accent-violet: #484890;
+  --color-accent-royal-blue: #186cb4;
+  --color-accent-sky: #54b4e4;
+  --color-accent-azure: #0090cc;
+  --color-accent-yellow: #54b4e4;
+  --color-accent-red: #d83c24;
+  --color-accent-crimson: #c01824;
+  --color-accent-green: #1a74b8;
+  --color-accent-green-deep: #004899;
+  --color-accent-lime: #36a9e1;
+
+  --color-white-see-through-10: #ffffff1a;
+  --color-white-see-through-20: #ffffff33;
+  --color-white-see-through-50: #ffffff80;
+
+  --color-black-see-through-20: #00000033;
+  --color-black-see-through-30: #0000004d;
+  --color-black-see-through-40: #00000066;
+  --color-black-see-through-60: #00000099;
+
+  --breakpoint-wide: 90rem;
+
+  --text-heading-1: 2.75rem;
+  --text-heading-1--line-height: 1.2;
+
+  --text-heading-2: 2rem;
+  --text-heading-2--line-height: 1.2;
+
+  --text-heading-3: 1.5rem;
+  --text-heading-3--line-height: 1.2;
+  --text-heading-3--letter-spacing: -0.03125rem;
+
+  --text-heading-4: 1.25rem;
+  --text-heading-4--line-height: 1.2;
+  --text-heading-4--letter-spacing: -0.03125rem;
+
+  --text-heading-5: 1.125rem;
+  --text-heading-5--line-height: 1.36;
+  --text-heading-5--letter-spacing: -0.015625rem;
+
+  --text-heading-6: 0.875rem;
+  --text-heading-6--line-height: 1.36;
+  --text-heading-6--letter-spacing: -0.015625rem;
+
+  --text-body-lg: 1.25rem;
+  --text-body-lg--line-height: 1.6;
+  --text-body-lg--letter-spacing: -0.015625rem;
+
+  --text-body-md: 1rem;
+  --text-body-md--line-height: 1.6;
+
+  --text-body-sm: 0.75rem;
+  --text-body-sm--line-height: 1.2;
+
+  --text-label-lg: 1.125rem;
+  --text-label-lg--line-height: 1;
+
+  --text-label-md: 1rem;
+  --text-label-md--line-height: 1;
+
+  --text-label-sm: 0.875rem;
+  --text-label-sm--line-height: 1;
+
+  --text-label-xs: 0.75rem;
+  --text-label-xs--line-height: 1;
+}
+
+/* Existing semantic tokens remain available while components migrate. */
+:root {
+  --bg: #171918;
+  --panel: #202321;
+  --line: #373b36;
+  --text: #f4f3ed;
+  --muted: #abb0a5;
+  --accent: #d5fa6c;
+  --mono: Consolas, "Courier New", monospace;
+}
