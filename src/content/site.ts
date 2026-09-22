@@ -34,11 +34,11 @@ export const site = {
   hero: {
     eyebrow: "ЛИЧНОЕ ПОРТФОЛИО / DEVELOPER",
     greeting: "Привет, я",
-    name: "Ваше имя",
+    name: "Саша",
     lineLead: "Превращаю идеи",
     lineEmphasis: "работающий код.",
     description:
-      "Веб-разработчик. Создаю понятные интерфейсы, быстрые сайты и приложения, которыми приятно пользоваться.",
+      "Веб-разработчик. Создаю понятные интерфейсы, лендинги, срм и приложения, которыми приятно пользоваться.",
     cta: {
       href: "#projects",
       label: "Посмотреть проекты",
@@ -59,7 +59,7 @@ export const site = {
   tech: {
     label: "МОЙ ИНСТРУМЕНТАРИЙ",
     ariaLabel: "Пример стека",
-    items: ["JavaScript", "TypeScript", "React", "Node.js", "Git", "Figma"],
+    items: ["Tailwind CSS", "TypeScript", "React", "Git", "Figma"],
   },
   about: {
     eyebrow: "01 / ЗНАКОМСТВО",
@@ -118,11 +118,11 @@ export const site = {
     titleMid: "начинаются с",
     titleEmphasis: "«привет».",
     body: ["Есть идея, задача или предложение?", "Буду рад познакомиться."],
-    email: "hello@example.com",
+    email: "vozmibikazaroga@gmail.com",
     note: "Пример адреса — замените на свой",
   },
   footer: {
-    credit: "Ваше имя · Персональный сайт",
+    credit: "Лукьянов Александр · Персональный сайт",
     toTop: "Наверх ↑",
   },
 } as const;
